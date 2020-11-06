@@ -1,5 +1,5 @@
-#Sarah Wan
-#sarah.wan@vanderbilt.edy
+#Sarah Wan, Erin Hardnett
+#sarah.wan@vanderbilt.edu
 #Project 2
 
 DROP DATABASE IF EXISTS accidentdb;
@@ -19,7 +19,7 @@ DROP DATABASE IF EXISTS accidentdb;
     start_lng VARCHAR(15),
     end_lat VARCHAR(15),
     end_lng VARCHAR(15),
-    distance DECIMAL(20, 5),
+    distance DECIMAL(20, 10),
     acc_description TEXT,
     street_num VARCHAR(10),
     street VARCHAR(100),
