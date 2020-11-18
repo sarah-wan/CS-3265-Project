@@ -22,45 +22,45 @@ try
     }
 }
 
-if (isset($_POST['submit_state'])) {
+// if (isset($_POST['submit_state'])) {
 
-    $state = $_POST['state'];
+//     $state = $_POST['state'];
 
-    $state_query = "SELECT * FROM accidents WHERE state = :state";
+//     $state_query = "SELECT * FROM Accidents WHERE state = :state";
 
-try
-    {
-      $state_prepared_stmt = $dbo->prepare($state_query);
-      $state_prepared_stmt->bindValue(':state', $state, PDO::PARAM_STR);
-      $state_prepared_stmt->execute();
-      $state_result = $state_prepared_stmt->fetchAll();
+// try
+//     {
+//       $state_prepared_stmt = $dbo->prepare($state_query);
+//       $state_prepared_stmt->bindValue(':state', $state, PDO::PARAM_STR);
+//       $state_prepared_stmt->execute();
+//       $state_result = $state_prepared_stmt->fetchAll();
 
-    }
-    catch (PDOException $ex)
-    { // Error in database processing.
-      echo $sql . "<br>" . $error->getMessage(); // HTTP 500 - Internal Server Error
-    }
-}
+//     }
+//     catch (PDOException $ex)
+//     { // Error in database processing.
+//       echo $sql . "<br>" . $error->getMessage(); // HTTP 500 - Internal Server Error
+//     }
+// }
 
-if (isset($_POST['submit_zipcode'])) {
+// if (isset($_POST['submit_zipcode'])) {
+  
+//     $zipcode = $_POST['zipcode'];
 
-    $zipcode = $_POST['zipcode'];
+//     $zipcode_query = "SELECT * FROM Accidents WHERE zipcode = :zipcode";
 
-    $zipcode_query = "SELECT * FROM Accidents WHERE zipcode = :zipcode";
+// try
+//     {
+//       $zipcode_prepared_stmt = $dbo->prepare($zipcode_query);
+//       $zipcode_prepared_stmt->bindValue(':zipcode', $zipcode, PDO::PARAM_STR);
+//       $zipcode_prepared_stmt->execute();
+//       $zipcode_result = $zipcode_prepared_stmt->fetchAll();
 
-try
-    {
-      $zipcode_prepared_stmt = $dbo->prepare($zipcode_query);
-      $zipcode_prepared_stmt->bindValue(':zipcode', $zipcode, PDO::PARAM_STR);
-      $zipcode_prepared_stmt->execute();
-      $zipcode_result = $zipcode_prepared_stmt->fetchAll();
-
-    }
-    catch (PDOException $ex)
-    { // Error in database processing.
-      echo $sql . "<br>" . $error->getMessage(); // HTTP 500 - Internal Server Error
-    }
-}
+//     }
+//     catch (PDOException $ex)
+//     { // Error in database processing.
+//       echo $sql . "<br>" . $error->getMessage(); // HTTP 500 - Internal Server Error
+//     }
+// }
 ?>
 
 <html>
