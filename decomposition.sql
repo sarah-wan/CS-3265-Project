@@ -26,8 +26,10 @@ CREATE TABLE IF NOT EXISTS accidents (
     PRIMARY KEY (id)
 )ENGINE INNODB;
 
-ALTER TABLE accidents ADD INDEX airport_code(airport_code);
-ALTER TABLE accidents ADD INDEX start_position(start_lat, start_lng);
+
+ALTER TABLE accidents ADD INDEX airport_code_idx(airport_code);
+ALTER TABLE accidents ADD INDEX zipcode_idx(zipcode);
+ALTER TABLE accidents ADD INDEX start_position(start_lat, end_lat);
 ALTER TABLE accidents ADD INDEX city(city, state, start_time);
 
 SET SESSION sql_mode = '';
