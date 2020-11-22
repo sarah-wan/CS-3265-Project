@@ -25,7 +25,7 @@ div#navbar a {
 
 div#navbar a:hover{
  color: #f1f1f1;
- background-color: navy;
+ background-color: red;
 }
 
 .main {
@@ -38,25 +38,25 @@ label {
   margin: 5px 0;
 }
 
-table {
+.info {
+  overflow-x: scroll;
+  width: 100%;
   display: none;
-  border-collapse: collapse;
-  border-spacing: 0;
 }
 
 td, th {
   padding: 5px 30px 5px 30px;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid black;
+}
+
+th {
+  background-color: lightgray;
+  border-bottom: 2px solid black;
 }
 
 h1{
-	color:red;
-  border-bottom: 5px dotted red;
-
-}
-
-h2{
-
+	color:navy;
+  border-bottom: 5px dotted navy;
 
 }
 
@@ -65,6 +65,67 @@ footer{
 	border-top: dotted 1px;
 }
 
-p{
-	width: 600px;
+#about{
+	width: 100%;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+#about a {
+  font-style: italic;
+}
+
+#flag {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+#about ul li{
+    float: left;
+    width: 50%;
+    font-size: 16px;
+}
+#about ul{
+    list-style-type: disc;
+}
+
+.row {
+  height: 25%;
+}
+
+.column {
+  float: left;
+  text-align: center;
+}
+
+.left {
+  width: 20%;
+}
+
+.middle {
+  width: 20%;
+}
+
+.right {
+  width: 20%;
+}
+
+.column img {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.column div {
+  width: 300px;
+  height: 300px;
+}
+
+#give_way img {
+  margin-top: 20px;
+}
+
+#no_exit img {
+  margin-top: 70px;
+  margin-bottom: 40px;
 }
