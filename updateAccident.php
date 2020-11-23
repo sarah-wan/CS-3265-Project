@@ -49,7 +49,7 @@ try
                       <input type = "text" ID = "" required>
                   </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Severity :
                     <strong></td>
@@ -59,74 +59,74 @@ try
                         <input type = "radio" name = "Severity"> 3
                         <input type = "radio" name = "Severity"> 4
                         <input type = "radio" name = "Severity"> 5
-                    </td>   
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Start Time:
                     <strong></td>
                     <td>
-                        <input type = "datetime-local" name = "Start" required> 
-                    </td>   
+                        <input type = "datetime-local" name = "Start" required>
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         End Time:
                     <strong></td>
                     <td>
-                        <input type = "datetime-local" name = "End" required> 
-                    </td>   
+                        <input type = "datetime-local" name = "End" required>
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Description:
                     <strong></td>
                     <td>
-                        <input type = "text" name = "description"> 
-                    </td>   
+                        <input type = "text" name = "description">
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Street Number:
                     <strong></td>
                     <td>
-                        <input type = "text" name = "streetnum"> 
-                    </td>   
+                        <input type = "text" name = "streetnum">
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Street Name:
                     <strong></td>
                     <td>
-                        <input type = "text" name = "street" required>  
-                    </td>   
+                        <input type = "text" name = "street" required>
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Side:
                     <strong></td>
                     <td>
                         <input type = "radio" name = "side" required> R
-                        <input type = "radio" name = "side"> L 
-                    </td>   
+                        <input type = "radio" name = "side"> L
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         City:
                     <strong></td>
                     <td>
-                        <input type = "text" name = "city" required>  
-                    </td>   
+                        <input type = "text" name = "city" required>
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         County:
                     <strong></td>
                     <td>
-                        <input type = "text" name = "county">  
-                    </td>   
+                        <input type = "text" name = "county">
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         State:
                     <strong></td>
@@ -183,18 +183,18 @@ try
                             <option value="WV">West Virginia</option>
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
-                        </select> 
-                    </td>   
+                        </select>
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Zipcode:
                     <strong></td>
                     <td>
-                        <input type = "text" name = "zipcode" required>  
-                    </td>   
+                        <input type = "text" name = "zipcode" required>
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Timezone:
                     <strong></td>
@@ -206,12 +206,12 @@ try
                             <option value="US/Pacific">US/Pacific</option>
                         </select>
 
-                    </td>   
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td>
                         <input type = "Submit" value = "Submit" name = ""> 
-                    </td>   
+                    </td>
                 </tr>
             </table>
       </form>

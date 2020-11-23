@@ -77,14 +77,13 @@ try
         function results($result) {
            foreach ($result as $row) {
             ?>
-            <p><strong>ID: </strong><?php echo $row["id"]; ?>
-              <strong> Source: </strong><?php echo $row["src"]; ?>
-              <strong> TMC: </strong><?php echo $row["tmc"]; ?>
-              <strong> Severity: </strong><?php echo $row["severity"]; ?> <br>
-              <strong> Description: </strong><?php echo $row["acc_description"]; ?><br>
-              <button type="button" name="button" onclick="showDiv('<?php echo $row["id"];?>')">More Info</button>
-              <div id=<?= $row["id"]?> class="info">
-                <table>
+              <p class="search_results"><strong>ID: </strong><?php echo $row["id"]; ?>
+                <strong> Source: </strong><?php echo $row["src"]; ?>
+                <strong> TMC: </strong><?php echo $row["tmc"]; ?>
+                <strong> Severity: </strong><?php echo $row["severity"]; ?> <br>
+                <strong> Description: </strong><?php echo $row["acc_description"]; ?><br>
+                <button type="button" name="button" onclick="showDiv('<?php echo $row["id"];?>')">More Info</button>
+                <table id=<?= $row["id"]?> class="info">
                   <tbody>
                     <tr>
                       <th>Start Time</th>
@@ -119,7 +118,7 @@ try
                     </tr>
                   </tbody>
                 </table>
-              </div>
+              </p>
           <?php }
         }
 
