@@ -1,20 +1,43 @@
 <?php
 
-if (isset($_POST['submit_id'])) {
+if (isset($_POST['submit'])) {
 
     require_once("conn.php");
 
     $id = $_POST['id'];
+    $severity = $_POST['Severity'];
+    $starttime =  date("Y-m-d H:i:s", strtotime($_POST["Starttime"]));
+    $endtime = date("Y-m-d H:i:s", strtotime($_POST["Endtime"]));
+    $description = $_POST['description'];
+    $streetnumber = $_POST['streetnum'];
+    $streetname = $_POST['street'];
+    $side = $_POST['side'];
+    $city = $_POST['city'];
+    $county = $_POST['county'];
+    $state = $_POST['state'];
+    $zipcode = $_POST['zipcode'];
+    $timezone = $_POST['timezone'];
 
-    $id_query = "SELECT * FROM Accidents WHERE id = :id";
+    $insert_call = "CALL report_accident(:id, :severity, :starttime, :endtime, :description, :streetnum, :streetname, :side, :city, :county, :state, :zipcode, :timezone)";
 
-try
+    try
     {
-      $id_prepared_stmt = $dbo->prepare($id_query);
-      $id_prepared_stmt->bindValue(':id', $id, PDO::PARAM_STR);
-      $id_prepared_stmt->execute();
-      $id_result = $id_prepared_stmt->fetchAll();
+      $prepared_stmt = $dbo->prepare($insert_call);
+      $prepared_stmt->bindValue(':id', $id, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':severity', $severity, PDO::PARAM_INT);
+      $prepared_stmt->bindValue(':starttime', $starttime, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':endtime', $endtime, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':description', $description, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':streetnum', $streetnumber, PDO::PARAM_INT);
+      $prepared_stmt->bindValue(':streetname', $streetname, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':side', $side, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':city', $city, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':county', $county, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':state', $state, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':zipcode', $zipcode, PDO::PARAM_INT);
+      $prepared_stmt->bindValue(':timezone', $timezone, PDO::PARAM_STR);
 
+      $isSuccess = $prepared_stmt->execute();
     }
     catch (PDOException $ex)
     { // Error in database processing.
@@ -39,14 +62,14 @@ try
     <div class="main">
       <h1> Report an Accident</h1>
 
-      <form method="post">
+      <form method="POST">
           <table>
               <tr>
                   <td><strong>
                       ID :
                       <strong></td>
                   <td>
-                      <input type = "text" ID = "" required>
+                      <input type = "text" name = "id" required>
                   </td>
                 </tr>
                 <tr> 
@@ -54,11 +77,11 @@ try
                         Severity :
                     <strong></td>
                     <td>
-                        <input type = "radio" name = "Severity" required> 1
-                        <input type = "radio" name = "Severity"> 2
-                        <input type = "radio" name = "Severity"> 3
-                        <input type = "radio" name = "Severity"> 4
-                        <input type = "radio" name = "Severity"> 5
+                        <input type = "radio" name = "Severity" value = "1" required> 1
+                        <input type = "radio" name = "Severity" value = "2"> 2
+                        <input type = "radio" name = "Severity" value = "3"> 3
+                        <input type = "radio" name = "Severity" value = "4"> 4
+                        <input type = "radio" name = "Severity" value = "5"> 5
                     </td>   
                 </tr>
                 <tr> 
@@ -66,7 +89,7 @@ try
                         Start Time:
                     <strong></td>
                     <td>
-                        <input type = "datetime-local" name = "Start" required> 
+                        <input type = "datetime-local" name = "Starttime" required> 
                     </td>   
                 </tr>
                 <tr> 
@@ -74,7 +97,7 @@ try
                         End Time:
                     <strong></td>
                     <td>
-                        <input type = "datetime-local" name = "End" required> 
+                        <input type = "datetime-local" name = "Endtime" required> 
                     </td>   
                 </tr>
                 <tr> 
@@ -106,8 +129,8 @@ try
                         Side:
                     <strong></td>
                     <td>
-                        <input type = "radio" name = "side" required> R
-                        <input type = "radio" name = "side"> L 
+                        <input type = "radio" name = "side" value = "R" required> Right
+                        <input type = "radio" name = "side" value = "L"> Left
                     </td>   
                 </tr>
                 <tr> 
@@ -199,7 +222,7 @@ try
                         Timezone:
                     <strong></td>
                     <td>
-                        <select id = "state" name = "state">
+                        <select id = "timezone" name = "timezone">
                             <option value="US/Eastern">US/Eastern</option>
                             <option value="US/Central">US/Central</option>
                             <option value="US/Mountain View">US/Mountain View</option>
@@ -210,81 +233,23 @@ try
                 </tr>
                 <tr> 
                     <td>
-                        <input type = "Submit" value = "Submit" name = ""> 
+                        <input type = "submit" value = "Submit" name = "submit"> 
                     </td>   
                 </tr>
             </table>
       </form>
       <?php
-        function results($result) {
-           foreach ($result as $row) {
-            ?>
-            <p><strong>ID: </strong><?php echo $row["id"]; ?>
-              <strong> Source: </strong><?php echo $row["src"]; ?>
-              <strong> TMC: </strong><?php echo $row["tmc"]; ?>
-              <strong> Severity: </strong><?php echo $row["severity"]; ?> <br>
-              <strong> Description: </strong><?php echo $row["acc_description"]; ?><br>
-              <button type="button" name="button" onclick="showDiv('<?php echo $row["id"];?>')">More Info</button>
-              <div id=<?= $row["id"]?> class="info">
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>Start Time</th>
-                      <th>End Time</th>
-                      <th>Start Position (Latitude, Longitude)</th>
-                      <th>End Position (Latitude, Longitude)</th>
-                      <th>Distance (mi)</th>
-                      <th>Address</th>
-                      <th>Timezone</th>
-                      <th>Airport Code</th>
-                    </tr>
-                    <tr>
-                      <td><?php echo $row["start_time"]; ?></td>
-                      <td><?php echo $row["end_time"]; ?></td>
-                      <td><?php echo "(", $row["start_lat"], ", ", $row["start_lng"], ")"; ?></td>
-                      <?php
-                        $end_lat = $row["end_lat"];
-                        $end_lng = $row["end_lng"];
-                        $end_position = "(" . $end_lat . "," . $end_lng . ")";
-                        if (is_null($row["end_lat"]) || is_null($row["end_lng"])) {
-                          $end_position = "Unknown";
-                        }
-                       ?>
-                      <td><?php echo $end_position; ?></td>
-                      <td><?php echo $row["distance"]; ?></td>
-                      <td><?php echo $row["street_num"], " ", $row["street"],
-                          " ", $row["side"], " ", $row["county"], ", ",
-                          $row["state"], " ", $row["zipcode"], ", ",
-                          $row["country"];?></td>
-                      <td><?php echo $row["timezone"]; ?></td>
-                      <td><?php echo $row["airport_code"]; ?></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-          <?php }
-        }
 
-        if (isset($_POST['submit_id'])) {
-          if ($id_result && $id_prepared_stmt->rowCount() > 0) {
+        if (isset($_POST['submit'])) {
+          if ($isSuccess) {
                 ?>
-              <h2>Results from ID</h2>
+              Error Has Occured
               <?php
-              results($id_result);
           } else {?>
-            Sorry! No results for id: <?php echo $id; ?>.
+            Successfully Inserted Accident!
           <?php
             }
-         } else if (isset($_POST['submit_zipcode'])) {
-            if ($zipcode_result && $zipcode_prepared_stmt->rowCount() > 0) {
-              ?>
-              <h2>Results from Zip Code</h2>
-              <?php
-              results($zipcode_result);
-            } else {?>
-              Sorry! No results for zip code: <?php echo $zipcode; ?>.
-            <?php }
-          } ?>
+         } ?>
 
     </div>
 
