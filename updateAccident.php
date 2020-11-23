@@ -18,7 +18,8 @@ if (isset($_POST['submit'])) {
     $zipcode = $_POST['zipcode'];
     $timezone = $_POST['timezone'];
 
-    $insert_call = "CALL report_accident(:id, :severity, :starttime, :endtime, :description, :streetnum, :streetname, :side, :city, :county, :state, :zipcode, :timezone)";
+    $insert_call = "CALL report_accident(:id, :severity, :starttime, :endtime, :description, :streetnum, :streetname, 
+    :side, :city, :county, :state, :zipcode, :timezone)";
 
     try
     {
