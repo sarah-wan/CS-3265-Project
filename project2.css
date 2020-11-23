@@ -24,8 +24,8 @@ div#navbar a {
 }
 
 div#navbar a:hover{
- color: #f1f1f1;
- background-color: red;
+ color: white;
+ background-color: #d64541;
 }
 
 .main {
@@ -55,8 +55,8 @@ th {
 }
 
 h1{
-	color:navy;
-  border-bottom: 5px dotted navy;
+	color: #4973AB;
+  border-bottom: 5px dotted #4973AB;
 
 }
 
@@ -128,4 +128,16 @@ footer{
 #no_exit img {
   margin-top: 70px;
   margin-bottom: 40px;
+}
+
+.search_results {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+}
+.search_results:nth-child(even) {
+  background-color: #BCD2EE;
+  border-bottom: 1px solid lightgray;
+  border-top: 1px solid lightgray;
 }

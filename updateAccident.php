@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
                       <input type = "text" name = "id" required>
                   </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Severity :
                     <strong></td>
@@ -83,74 +83,74 @@ if (isset($_POST['submit'])) {
                         <input type = "radio" name = "Severity" value = "3"> 3
                         <input type = "radio" name = "Severity" value = "4"> 4
                         <input type = "radio" name = "Severity" value = "5"> 5
-                    </td>   
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Start Time:
                     <strong></td>
                     <td>
-                        <input type = "datetime-local" name = "Starttime" required> 
-                    </td>   
+                        <input type = "datetime-local" name = "Starttime" required>
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         End Time:
                     <strong></td>
                     <td>
-                        <input type = "datetime-local" name = "Endtime" required> 
-                    </td>   
+                        <input type = "datetime-local" name = "Endtime" required>
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Description:
                     <strong></td>
                     <td>
-                        <input type = "text" name = "description"> 
-                    </td>   
+                        <input type = "text" name = "description">
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Street Number:
                     <strong></td>
                     <td>
-                        <input type = "text" name = "streetnum"> 
-                    </td>   
+                        <input type = "text" name = "streetnum">
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Street Name:
                     <strong></td>
                     <td>
-                        <input type = "text" name = "street" required>  
-                    </td>   
+                        <input type = "text" name = "street" required>
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Side:
                     <strong></td>
                     <td>
                         <input type = "radio" name = "side" value = "R" required> Right
                         <input type = "radio" name = "side" value = "L"> Left
-                    </td>   
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         City:
                     <strong></td>
                     <td>
-                        <input type = "text" name = "city" required>  
-                    </td>   
+                        <input type = "text" name = "city" required>
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         County:
                     <strong></td>
                     <td>
-                        <input type = "text" name = "county">  
-                    </td>   
+                        <input type = "text" name = "county">
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         State:
                     <strong></td>
@@ -207,18 +207,18 @@ if (isset($_POST['submit'])) {
                             <option value="WV">West Virginia</option>
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
-                        </select> 
-                    </td>   
+                        </select>
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Zipcode:
                     <strong></td>
                     <td>
-                        <input type = "text" name = "zipcode" required>  
-                    </td>   
+                        <input type = "text" name = "zipcode" required>
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td><strong>
                         Timezone:
                     <strong></td>
@@ -230,12 +230,12 @@ if (isset($_POST['submit'])) {
                             <option value="US/Pacific">US/Pacific</option>
                         </select>
 
-                    </td>   
+                    </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td>
-                        <input type = "submit" value = "Submit" name = "submit"> 
-                    </td>   
+                        <input type = "submit" value = "Submit" name = "submit">
+                    </td>
                 </tr>
             </table>
       </form>
