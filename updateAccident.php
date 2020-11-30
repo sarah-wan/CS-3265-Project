@@ -58,6 +58,7 @@ if (isset($_POST['submit'])) {
         <a href="getAccident.php">Search Accidents</a>
         <a href="accidentAreaView.php">View Accident Area by State</a>
         <a href="updateAccident.php">Report an Accident</a>
+        <a href="accidentWeatherConditions.php">View Accident Weather Conditions</a>
     </div>
     <div class="main">
       <h1> Report an Accident</h1>
@@ -252,17 +253,5 @@ if (isset($_POST['submit'])) {
          } ?>
 
     </div>
-
-
-    <script type="text/javascript">
-      function showDiv(id) {
-        if (document.getElementById(id).style.display == "block") {
-          document.getElementById(id).style.display = "none";
-        } else {
-          document.getElementById(id).style.display = "block";
-        }
-      }
-    </script>
-
   </body>
 </html>

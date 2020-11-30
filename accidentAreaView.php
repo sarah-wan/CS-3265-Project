@@ -1,7 +1,7 @@
 <?php
 
 require_once("conn.php");
-$options_query = "SELECT DISTINCT state FROM accident_area ORDER BY state ASC";
+$options_query = "SELECT state FROM states ORDER BY state ASC";
 try
 {
   $options_prepared_stmt = $dbo->prepare($options_query);
@@ -79,6 +79,7 @@ $states_options = array(
         <a href="getAccident.php">Search Accidents</a>
         <a href="accidentAreaView.php">View Accident Area by State</a>
         <a href="updateAccident.php">Report an Accident</a>
+        <a href="accidentWeatherConditions.php">View Accident Weather Conditions</a>
     </div>
     <div class="main">
       <h1>View Accident Area Info by State</h1>
@@ -130,8 +131,8 @@ $states_options = array(
                   }
             }
             ?>
-        </select>
-        <input type="submit" name="submit_state" value="Submit">
+        </select><br><br>
+        <input type="submit" name="submit_state" value="Submit State">
       </form>
       <div id="severityChart" style="height: 370px; width: 100%;"></div>
     <?php

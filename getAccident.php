@@ -47,6 +47,8 @@ try
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="project2.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -55,6 +57,7 @@ try
         <a href="getAccident.php">Search Accidents</a>
         <a href="accidentAreaView.php">View Accident Area by State</a>
         <a href="updateAccident.php">Report an Accident</a>
+        <a href="accidentWeatherConditions.php">View Accident Weather Conditions</a>
     </div>
     <div class="main">
       <h1> Search for Accidents</h1>
@@ -62,16 +65,16 @@ try
       <form method="post">
 
         <label for="id"><strong>Search By ID</strong></label>
-        <input type="text" name="id">
+        <input type="text" name="id"><br><br>
 
-        <input type="submit" name="submit_id" value="Submit">
+        <input type="submit" name="submit_id" value="Submit ID">
       </form>
-
+      <br>
       <form method="post">
         <label for="zipcode"><strong>Search By Zip Code</strong></label>
-        <input type="text" name="zipcode">
+        <input type="text" name="zipcode"><br><br>
 
-        <input type="submit" name="submit_zipcode" value="Submit">
+        <input type="submit" name="submit_zipcode" value="Submit Zip Code">
       </form>
       <?php
         function results($result) {
@@ -125,7 +128,7 @@ try
         if (isset($_POST['submit_id'])) {
           if ($id_result && $id_prepared_stmt->rowCount() > 0) {
                 ?>
-              <h2>Results from ID</h2>
+              <h3><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> Results from ID <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></h3>
               <?php
               results($id_result);
           } else {?>
@@ -135,7 +138,7 @@ try
          } else if (isset($_POST['submit_zipcode'])) {
             if ($zipcode_result && $zipcode_prepared_stmt->rowCount() > 0) {
               ?>
-              <h2>Results from Zip Code</h2>
+              <h3><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> Results from Zip Code <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></h3>
               <?php
               results($zipcode_result);
             } else {?>

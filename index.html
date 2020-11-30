@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="project2.css">
+		<link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 
 	<body>
@@ -10,6 +12,7 @@
 			<a href="getAccident.php"> Search Accidents </a>
 			<a href="accidentAreaView.php">View Accident Area by State</a>
 			<a href="updateAccident.php">Report an Accident</a>
+			<a href="accidentWeatherConditions.php">View Accident Weather Conditions</a>
 		</div>
 
 		<div class="main">
@@ -17,7 +20,7 @@
 
 			<img id="flag" src= "images/united-states_road-traffic-accidents.jpg" />
 
-			<h3>About the Data</h3>
+			<h3><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> About the Data <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></h3>
 			<p id="about">
 				  This is a countrywide car accident dataset, which covers 49 states of
 					the USA. The accident data are collected from February 2016 to June
@@ -30,12 +33,12 @@
 					<a href="https://www.kaggle.com/sobhanmoosavi/us-accidents">here</a>.
 				</p>
 
-			<h3>About our Database</h3>
+			<h3><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> About our Database <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></h3>
 			<h4>Tables</h4>
 			<p id="about">
 				For our database, we chose to break the data down into four separate tables:
 				Accidents, Area Description, Time of Day, and Weather Condition Info. <br><br>
-				<u>Accidents</u><br>
+				<strong><u>Accidents</u></strong><br>
 				This table holds overall information about the accident in terms of when
 				the accident occurred, where it took place, and the severity of the accident.
 				The following fields are present in this table:
@@ -64,7 +67,7 @@
 					<li>Airport Code: code of the nearest airport to the accident</li>
 					<li>Weather Timestamp: timestamp when the weather conditions were taken</li>
 				</ul>
-				<u>Area Description</u><br>
+				<strong><u>Area Description</u></strong><br>
 				This table had the overall description of the accident area in terms of
 				many road elements. The following fields are present in the table:
 				<ul>
@@ -75,7 +78,7 @@
           <li>Bump: a bump in the road where the accident occurred.</li>
           <li>Crossing: a crosswalk or a crossing warning sign
               covered the area.</li>
-          <li><strong>Give Way/Yield: </strong>A yield sign was near the sight
+          <li>Give Way/Yield: A yield sign was near the sight
               of the accident.</li>
           <li>Junction: a road had multiple paths for the person
               to take where the accident occurred.</li>
@@ -90,7 +93,7 @@
           <li>Turning Loop: the accident occurred near a turning
               loop in the road.</li>
 				</ul>
-				<u>Time of Day</u><br>
+				<strong><u>Time of Day</u></strong><br>
 				This table represents the time of day and what the sky looked like at the
 				time of the accident. The following fields are present in this table:
 				<ul>
@@ -106,7 +109,7 @@
 					<li>Astronomical Twilight: determines if the accident happened during
 							an astoronomical twilight</li>
 				</ul>
-				<u>Weather Condition Info</u><br>
+				<strong><u>Weather Condition Info</u></strong><br>
 				This table holds the relevant information about the weather conditions
 				at the time of the accident including wind chill, humidity, and wind
 				speed. The following fields are present in this table:
@@ -124,7 +127,12 @@
 				</ul>
 			</p>
 			<h4>DML Usage</h4>
-			<p></p>
+
+			<p id="about">
+				<strong><u>Insert</u></strong><br>
+				<strong><u>Update</u></strong><br>
+				<strong><u>Delete</u></strong><br>
+			</p>
 		</div>
 
 
