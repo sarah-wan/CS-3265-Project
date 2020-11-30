@@ -244,11 +244,12 @@ if (isset($_POST['submit'])) {
         if (isset($_POST['submit'])) {
           if ($isSuccess) {
                 ?>
-              Error Has Occured
+                Successfully Inserted Accident!
               <?php
           } else {?>
-            Successfully Inserted Accident!
+                Error!
           <?php
+                print_r($prepared_stmt ->errorInfo());
             }
          } ?>
 
