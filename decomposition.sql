@@ -190,7 +190,7 @@ CREATE VIEW accident_weather AS
             pressure,
             visibility,
             wind_direction,
-						wind_speed,
+			wind_speed,
             precipitation,
             weather_condition
     FROM accidents
@@ -239,7 +239,6 @@ CREATE VIEW states AS
 SELECT DISTINCT state
 FROM accidents;
 
-
 DROP PROCEDURE IF EXISTS report_accident;
 DELIMITER //
 CREATE PROCEDURE report_accident(IN id VARCHAR(10), IN severity TINYINT(3), IN start_time DATETIME,
@@ -263,5 +262,5 @@ BEGIN
     VALUES (id, "Report Form", severity, start_time, end_time, description, street_num,
 			street, side, city, county, state, zipcode, timezone);
 
-END //
-DELIMITER :
+END//
+DELIMITER ;
