@@ -13,12 +13,13 @@ require_once("state_options.php");
 
   <body>
     <div id="navbar">
-        <a href="index.html">About Database</a>
-        <a href="getAccident.php">Search Accidents</a>
+        <a href="index.html"> About Database </a>
+        <a href="getAccident.php"> Search Accidents </a>
         <a href="accidentAreaView.php">View Accident Area by State</a>
-        <a href="updateAccident.php">Report an Accident</a>
         <a href="accidentWeatherConditions.php">View Accident Weather Conditions</a>
-    </div>
+        <a href="updateAccident.php">Report an Accident</a>
+        <a href="deleteAccident.php">Delete an Accident</a>
+		</div>
     <div class="main">
       <h1>View Accident Area by State</h1>
       <p>

@@ -18,7 +18,8 @@ if (isset($_POST['submit'])) {
     $zipcode = $_POST['zipcode'];
     $timezone = $_POST['timezone'];
 
-    $insert_call = "CALL report_accident(:id, :severity, :starttime, :endtime, :description, :streetnum, :streetname, :side, :city, :county, :state, :zipcode, :timezone)";
+    $insert_call = "CALL report_accident(:id, :severity, :starttime, :endtime, :description, :streetnum, :streetname,
+    :side, :city, :county, :state, :zipcode, :timezone)";
 
     try
     {
@@ -53,13 +54,14 @@ if (isset($_POST['submit'])) {
   </head>
 
   <body>
-    <div id="navbar">
-        <a href="index.html">About Database</a>
-        <a href="getAccident.php">Search Accidents</a>
-        <a href="accidentAreaView.php">View Accident Area by State</a>
-        <a href="updateAccident.php">Report an Accident</a>
-        <a href="accidentWeatherConditions.php">View Accident Weather Conditions</a>
-    </div>
+        <div id="navbar">
+			<a href="index.html"> About Database </a>
+			<a href="getAccident.php"> Search Accidents </a>
+			<a href="accidentAreaView.php">View Accident Area by State</a>
+			<a href="accidentWeatherConditions.php">View Accident Weather Conditions</a>
+			<a href="updateAccident.php">Report an Accident</a>
+			<a href="deleteAccident.php">Delete an Accident</a>
+		</div>
     <div class="main">
       <h1> Report an Accident</h1>
       <p>
@@ -246,13 +248,14 @@ if (isset($_POST['submit'])) {
       <?php
 
         if (isset($_POST['submit'])) {
-          if (!$isSuccess) {
+          if ($isSuccess) {
                 ?>
-              Error Has Occured
+                Successfully Inserted Accident!
               <?php
           } else {?>
-            Successfully Inserted Accident!
+                Error!
           <?php
+                print_r($prepared_stmt ->errorInfo());
             }
          } ?>
 

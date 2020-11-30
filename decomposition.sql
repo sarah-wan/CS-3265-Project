@@ -262,5 +262,26 @@ BEGIN
     VALUES (id, "Report Form", severity, start_time, end_time, description, street_num,
 			street, side, city, county, state, zipcode, timezone);
 
-END//
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS delete_accident;
+DELIMITER //
+CREATE PROCEDURE delete_accident(IN id_val VARCHAR(10))
+BEGIN
+	DECLARE mysrc VARCHAR(15);
+    SET mysrc = (SELECT src FROM accidents WHERE id = id_val);
+
+    IF (NOT mysrc = "Report Form") THEN
+		SIGNAL SQLSTATE "22003"
+        SET MESSAGE_TEXT = "Only can delete if accident was reported through the form",
+        MYSQL_ERRNO = 1264;
+	END IF;
+
+
+	DELETE FROM accidents
+    WHERE id = id_val AND src = "Report Form";
+
+END //
 DELIMITER ;

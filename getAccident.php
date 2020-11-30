@@ -54,11 +54,12 @@ try
 
   <body>
     <div id="navbar">
-        <a href="index.html">About Database</a>
-        <a href="getAccident.php">Search Accidents</a>
+        <a href="index.html"> About Database </a>
+			  <a href="getAccident.php"> Search Accidents </a>
         <a href="accidentAreaView.php">View Accident Area by State</a>
-        <a href="updateAccident.php">Report an Accident</a>
         <a href="accidentWeatherConditions.php">View Accident Weather Conditions</a>
+        <a href="updateAccident.php">Report an Accident</a>
+        <a href="deleteAccident.php">Delete an Accident</a>
     </div>
     <div class="main">
       <h1> Search for Accidents</h1>
