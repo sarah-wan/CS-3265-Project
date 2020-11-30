@@ -1,70 +1,7 @@
 <?php
 
 require_once("conn.php");
-$options_query = "SELECT DISTINCT state FROM accident_area ORDER BY state ASC";
-try
-{
-  $options_prepared_stmt = $dbo->prepare($options_query);
-  $options_prepared_stmt->execute();
-  $options_result = $options_prepared_stmt->fetchAll();
-}
-catch (PDOException $ex)
-{ // Error in database processing.
-  echo $sql . "<br>" . $error->getMessage(); // HTTP 500 - Internal Server Error
-}
-
-$states_options = array(
-  "AL" => "Alabama",
-  "AR" => "Arkansas",
-  "AZ" => "Arizona",
-  "CA" => "California",
-  "CO" => "Colorado",
-  "CT" => "Connecticut",
-  "DC" => "Washington, DC",
-  "DE" => "Delaware",
-  "FL" => "Florida",
-  "GA" => "Georgia",
-  "HI" => "Hawaii",
-  "IA" => "Iowa",
-  "ID" => "Idaho",
-  "IL" => "Illinois",
-  "IN" => "Indiana",
-  "KS" => "Kansas",
-  "KY" => "Kentucky",
-  "LA" => "Louisiana",
-  "MA" => "Massachusetts",
-  "MD" => "Maryland",
-  "ME" => "Maine",
-  "MI" => "Michigan",
-  "MN" => "Minnesota",
-  "MO" => "Missouri",
-  "MS" => "Mississippi",
-  "MT" => "Montana",
-  "NC" => "North Carolina",
-  "ND" => "North Dakota",
-  "NE" => "Nebraska",
-  "NH" => "New Hampshire",
-  "NJ" => "New Jersey",
-  "NM" => "New Mexico",
-  "NV" => "Nevada",
-  "NY" => "New York",
-  "OH" => "Ohio",
-  "OK" => "Oklahoma",
-  "OR" => "Oregon",
-  "PA" => "Pennsylvania",
-  "RI" => "Rhode Island",
-  "SC" => "South Carolina",
-  "SD" => "South Dakota",
-  "TN" => "Tennessee",
-  "TX" => "Texas",
-  "UT" => "Utah",
-  "VA" => "Virginia",
-  "VT" => "Vermont",
-  "WA" => "Washington",
-  "WI" => "Wisconsin",
-  "WV" => "West Virginia",
-  "WY" => "Wyoming"
-);
+require_once("state_options.php");
 ?>
 
 <html>
@@ -75,13 +12,21 @@ $states_options = array(
 
   <body>
     <div id="navbar">
-        <a href="index.html">About Database</a>
-        <a href="getAccident.php">Search Accidents</a>
+        <a href="index.html"> About Database </a>
+        <a href="getAccident.php"> Search Accidents </a>
         <a href="accidentAreaView.php">View Accident Area by State</a>
+        <a href="accidentWeatherConditions.php">View Accident Weather Conditions</a>
         <a href="updateAccident.php">Report an Accident</a>
-    </div>
+        <a href="deleteAccident.php">Delete an Accident</a>
+		</div>
     <div class="main">
       <h1>View Accident Area Info by State</h1>
+      <p>
+        On this page, you can see the overall data for the elements of the accidents
+        per state. Upon submitting the form, there will be a graph that shows the
+        number of accidents in the state per severity levels and the number of
+        accidents that have the different elements of the road.
+      </p>
 
       <form method="post">
         <label for="state">Choose a state</label>
@@ -130,8 +75,8 @@ $states_options = array(
                   }
             }
             ?>
-        </select>
-        <input type="submit" name="submit_state" value="Submit">
+        </select><br><br>
+        <input type="submit" name="submit_state" value="Submit State">
       </form>
       <div id="severityChart" style="height: 370px; width: 100%;"></div>
     <?php
@@ -168,6 +113,10 @@ $states_options = array(
         $turning_loop_total += $row["turning_loop_count"];
       }
      ?>
+     <p>
+       This graph represents the number of accidents in each severity level
+       in the state of <?php echo $state_options[$row['state']]; ?>.
+     </p>
     <script type="text/javascript">
         CanvasJS.addColorSet("severity",
           ["#ff6b6b", "#ff1f1f", "#e00000", "#a30000"]);

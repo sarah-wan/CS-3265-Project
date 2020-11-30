@@ -54,14 +54,20 @@ if (isset($_POST['submit'])) {
   </head>
 
   <body>
-    <div id="navbar">
-        <a href="index.html">About Database</a>
-        <a href="getAccident.php">Search Accidents</a>
-        <a href="accidentAreaView.php">View Accident Area by State</a>
-        <a href="updateAccident.php">Report an Accident</a>
-    </div>
+        <div id="navbar">
+			<a href="index.html"> About Database </a>
+			<a href="getAccident.php"> Search Accidents </a>
+			<a href="accidentAreaView.php">View Accident Area by State</a>
+			<a href="accidentWeatherConditions.php">View Accident Weather Conditions</a>
+			<a href="updateAccident.php">Report an Accident</a>
+			<a href="deleteAccident.php">Delete an Accident</a>
+		</div>
     <div class="main">
       <h1> Report an Accident</h1>
+      <p>
+        On this page, you are able to report a new accident that will be added to the
+        database upon submitting the form.
+      </p>
 
       <form method="POST">
           <table>
@@ -254,17 +260,5 @@ if (isset($_POST['submit'])) {
          } ?>
 
     </div>
-
-
-    <script type="text/javascript">
-      function showDiv(id) {
-        if (document.getElementById(id).style.display == "block") {
-          document.getElementById(id).style.display = "none";
-        } else {
-          document.getElementById(id).style.display = "block";
-        }
-      }
-    </script>
-
   </body>
 </html>

@@ -25,8 +25,7 @@ try {
 // Use with MAMP
 // $dbo = new PDO('mysql:host=' . $dbhost . ';port=8889;dbname=' . $dbname, $dbuname, $dbpass);
 
-// if ($dbo->connect_error) {
-//   die("Connection failed: " . $conn->connect_error);
-// }
-
+if ($dbo->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 ?>

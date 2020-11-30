@@ -190,11 +190,11 @@ CREATE VIEW accident_weather AS
             pressure,
             visibility,
             wind_direction,
-			wind_speed,
+						wind_speed,
             precipitation,
             weather_condition
-    FROM accidents 
-		JOIN weather_info 
+    FROM accidents
+		JOIN weather_info
         ON accidents.airport_code = weather_info.airport_code AND
         accidents.weather_timestamp = weather_info.weather_timestamp;
 
@@ -229,15 +229,20 @@ CREATE VIEW accident_area AS
             traffic_calming,
             traffic_signal,
             turning_loop
-    FROM accidents 
-		JOIN area_description 
+    FROM accidents
+		JOIN area_description
         ON accidents.start_lat = area_description.start_lat AND
         accidents.start_lng = area_description.start_lng;
+
+DROP VIEW IF EXISTS states;
+CREATE VIEW states AS
+SELECT DISTINCT state
+FROM accidents;
 
 
 DROP PROCEDURE IF EXISTS report_accident;
 DELIMITER //
-CREATE PROCEDURE report_accident(IN id VARCHAR(10), IN severity TINYINT(3), IN start_time DATETIME, 
+CREATE PROCEDURE report_accident(IN id VARCHAR(10), IN severity TINYINT(3), IN start_time DATETIME,
 								IN end_time DATETIME, IN description TEXT, IN street_num MEDIUMINT(8),
                                 IN street VARCHAR(100), IN side VARCHAR(10), IN city VARCHAR(50),
                                 IN county VARCHAR(50), IN state VARCHAR(2), IN zipcode MEDIUMINT(8),
@@ -246,19 +251,38 @@ BEGIN
     DECLARE EXIT HANDLER FOR 1062
     SIGNAL SQLSTATE "22003"
 	SET MESSAGE_TEXT = "Row was not inserted – duplicate entry";
-    
+
     IF (start_time > end_time) THEN
 		SIGNAL SQLSTATE "22003"
         SET MESSAGE_TEXT = "Accident starttime should be before endtime",
         MYSQL_ERRNO = 1264;
 	END IF;
-    
-    INSERT INTO accidents (id, src, severity, start_time, end_time, acc_description, 
+
+    INSERT INTO accidents (id, src, severity, start_time, end_time, acc_description,
 						street_num, street, side, city, county, state, zipcode, timezone)
-    VALUES (id, "Report Form", severity, start_time, end_time, description, street_num, 
+    VALUES (id, "Report Form", severity, start_time, end_time, description, street_num,
 			street, side, city, county, state, zipcode, timezone);
-    
+
 END //
 DELIMITER :
 
 
+DROP PROCEDURE IF EXISTS delete_accident;
+DELIMITER //
+CREATE PROCEDURE delete_accident(IN id_val VARCHAR(10))
+BEGIN
+	DECLARE mysrc VARCHAR(15);
+    SET mysrc = (SELECT src FROM accidents WHERE id = id_val);
+    
+    IF (NOT mysrc = "Report Form") THEN
+		SIGNAL SQLSTATE "22003"
+        SET MESSAGE_TEXT = "Only can delete if accident was reported through the form",
+        MYSQL_ERRNO = 1264;
+	END IF;
+
+
+	DELETE FROM accidents 
+    WHERE id = id_val AND src = "Report Form";
+
+END //
+DELIMITER :
