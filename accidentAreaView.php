@@ -36,43 +36,9 @@ require_once("state_options.php");
             if ($options_result && $options_prepared_stmt->rowCount() > 0){
                 foreach($options_result as $row) {
                   ?>
-                  <option value="<?= $row["state"]?>"><?php echo $states_options[$row["state"]];?></option>
+                  <option value="<?= $row['state']?>"><?php echo $states_options[$row['state']];?></option>
                   <?php
                 }
-            }
-            if (isset($_POST['state'])) {
-              $state = $_POST['state'];
-
-              $state_query = "SELECT DISTINCT state,
-                                              severity,
-                                              COUNT(severity) AS severity_count,
-                                              COUNT(CASE WHEN amenity = 'True' THEN 1 END) AS amenity_count,
-                                              COUNT(CASE WHEN bump = 'True' THEN 1 END) AS bump_count,
-                                              COUNT(CASE WHEN crossing = 'True' THEN 1 END) AS crossing_count,
-                                              COUNT(CASE WHEN give_way = 'True' THEN 1 END) AS give_way_count,
-                                              COUNT(CASE WHEN junction = 'True' THEN 1 END) AS junction_count,
-                                              COUNT(CASE WHEN no_exit = 'True' THEN 1 END) AS no_exit_count,
-                                              COUNT(CASE WHEN roundabout = 'True' THEN 1 END) AS roundabout_count,
-                                              COUNT(CASE WHEN stop_signal = 'True' THEN 1 END) AS stop_signal_count,
-                                              COUNT(CASE WHEN traffic_calming = 'True' THEN 1 END) AS traffic_calming_count,
-                                              COUNT(CASE WHEN traffic_signal = 'True' THEN 1 END) AS traffic_signal_count,
-                                              COUNT(CASE WHEN turning_loop = 'True' THEN 1 END) AS turning_loop_count
-                              FROM accident_area
-                              WHERE state = :state
-                              GROUP BY state, severity
-                              ORDER BY severity ASC";
-              try
-                  {
-                    $state_prepared_stmt = $dbo->prepare($state_query);
-                    $state_prepared_stmt->bindValue(':state', $state, PDO::PARAM_STR);
-                    $state_prepared_stmt->execute();
-                    $state_result = $state_prepared_stmt->fetchAll();
-
-                  }
-              catch (PDOException $ex)
-                  { // Error in database processing.
-                    echo $sql . "<br>" . $error->getMessage(); // HTTP 500 - Internal Server Error
-                  }
             }
             ?>
         </select><br><br>
@@ -80,6 +46,40 @@ require_once("state_options.php");
       </form>
       <div id="severityChart" style="height: 370px; width: 100%;"></div>
     <?php
+    if (isset($_POST['state'])) {
+      $state = $_POST['state'];
+
+      $state_query = "SELECT DISTINCT state,
+                                      severity,
+                                      COUNT(severity) AS severity_count,
+                                      COUNT(CASE WHEN amenity = 'True' THEN 1 END) AS amenity_count,
+                                      COUNT(CASE WHEN bump = 'True' THEN 1 END) AS bump_count,
+                                      COUNT(CASE WHEN crossing = 'True' THEN 1 END) AS crossing_count,
+                                      COUNT(CASE WHEN give_way = 'True' THEN 1 END) AS give_way_count,
+                                      COUNT(CASE WHEN junction = 'True' THEN 1 END) AS junction_count,
+                                      COUNT(CASE WHEN no_exit = 'True' THEN 1 END) AS no_exit_count,
+                                      COUNT(CASE WHEN roundabout = 'True' THEN 1 END) AS roundabout_count,
+                                      COUNT(CASE WHEN stop_signal = 'True' THEN 1 END) AS stop_signal_count,
+                                      COUNT(CASE WHEN traffic_calming = 'True' THEN 1 END) AS traffic_calming_count,
+                                      COUNT(CASE WHEN traffic_signal = 'True' THEN 1 END) AS traffic_signal_count,
+                                      COUNT(CASE WHEN turning_loop = 'True' THEN 1 END) AS turning_loop_count
+                      FROM accident_area
+                      WHERE state = :state
+                      GROUP BY state, severity
+                      ORDER BY severity ASC";
+     try
+          {
+            $state_prepared_stmt = $dbo->prepare($state_query);
+            $state_prepared_stmt->bindValue(':state', $state, PDO::PARAM_STR);
+            $state_prepared_stmt->execute();
+            $state_result = $state_prepared_stmt->fetchAll();
+
+          }
+      catch (PDOException $ex)
+          { // Error in database processing.
+            echo $sql . "<br>" . $error->getMessage(); // HTTP 500 - Internal Server Error
+          }
+
     if ($state_result && $state_prepared_stmt->rowCount() > 0) {
       $severity_data = array();
       $amenity_total = 0;
@@ -112,10 +112,11 @@ require_once("state_options.php");
         $traffic_signal_total += $row["traffic_signal_count"];
         $turning_loop_total += $row["turning_loop_count"];
       }
+    }
      ?>
      <p>
        This graph represents the number of accidents in each severity level
-       in the state of <?php echo $state_options[$row['state']]; ?>.
+       in the state.
      </p>
     <script type="text/javascript">
         CanvasJS.addColorSet("severity",
