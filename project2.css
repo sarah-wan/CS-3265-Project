@@ -199,3 +199,64 @@ div#navbar a:hover{
   border-bottom: 1px solid lightgray;
   border-top: 1px solid lightgray;
 }
+
+/* Styling for accidentWeatherConditions.php */
+div .weather_results {
+  background-image: linear-gradient(to bottom right, lightblue, #FFFFF2);
+  background-color: lightblue;
+  height: 30%;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+}
+
+.weather, .descriptions {
+  float: left;
+  padding: 10px;
+}
+
+.weather {
+  height: 100%;
+  width: 30%;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.city {
+  font-weight: bold;
+  width: 100%;
+}
+
+.fa-location-arrow {
+  color: black;
+}
+
+.temperature {
+  font-size: 60px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.descriptions {
+  width: 60%;
+  height: 100%;
+}
+
+.descriptions table {
+  border: 2px solid white;
+  width: 100%;
+  height: 90%;
+}
+
+.descriptions td {
+  border: 1px solid white;
+}
+
+.description_labels {
+  font-size: 12px;
+}
+
+.description_info {
+  font-size: 20px;
+}

@@ -62,6 +62,10 @@ if (isset($_POST['submit'])) {
     </div>
     <div class="main">
       <h1> Report an Accident</h1>
+      <p>
+        On this page, you are able to report a new accident that will be added to the
+        database upon submitting the form.
+      </p>
 
       <form method="POST">
           <table>

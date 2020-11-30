@@ -61,6 +61,12 @@ try
     </div>
     <div class="main">
       <h1> Search for Accidents</h1>
+      <p>
+        On this page, you can view the location and information of multiple accidents
+        by state or just one accident by ID. Upon submitting the form, you will
+        be able to see lots of accidents accompanied by a button to see more
+        information about the accident.
+      </p>
 
       <form method="post">
 
