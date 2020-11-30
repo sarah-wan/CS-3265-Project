@@ -8,6 +8,7 @@ From there, start your SQL server (whether that is MAMP or Homebrew services) an
 
 ### Set Up Website
 To run this website, you must set up the credentials in the conn.php file. If you are running your SQL Server using a MAMP/WAMP service, you should be able to find the information about the connection to the database from the website. If you are using another service to run your SQL Server, you should be able to retrieve that information from the connection tab in mySQL Workbench and add those credentials to the conn.php file.
+
 **Note:** Depending on if you have a Mac or Windows machine, there may be different services you need to use in order to get your machine to properly display PHP files on your web service. Here are some resources you can use to ensure that your PHP file runs correctly:
 * For Mac Users: https://jasonmccreary.me/articles/install-apache-php-mysql-mac-os-x-catalina/
 * For Windows Users: https://www.sitepoint.com/how-to-install-php-on-windows/
