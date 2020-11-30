@@ -25,6 +25,7 @@ if (isset($_POST['submit'])) {
 
 <html>
   <head>
+    <title>Delete an Accident</title>
     <link rel="stylesheet" type="text/css" href="project2.css" />
   </head>
 
@@ -38,7 +39,7 @@ if (isset($_POST['submit'])) {
 		<a href="deleteAccident.php">Delete an Accident</a>
 	</div>
     <div class="main">
-      <h1> Delete An Accident </h1>
+      <h1> Delete an Accident </h1>
       <p>
         On this page, you are able to delete an accident previously reported through the form.
       </p>

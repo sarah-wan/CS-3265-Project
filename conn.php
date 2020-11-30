@@ -3,14 +3,14 @@
 // Use with Homebrew terminal connection
 // $dbhost = '127.0.0.1'; // localhost
 // $dbuname = 'root';
-// $dbpass = 'Cheetah07!';
+// $dbpass = '';
 // $dbname = 'accidentdb';
 
 //Use with MAMP connection
-$dbhost = '127.0.0.1'; // localhost
-$dbuname = 'root';
-$dbpass = '';
-$dbname = 'accidentdb';
+// $dbhost = '127.0.0.1'; // localhost
+// $dbuname = 'root';
+// $dbpass = '';
+// $dbname = 'accidentdb';
 
 // Use with Homebrew terminal connection
 // try {

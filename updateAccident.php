@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     $zipcode = $_POST['zipcode'];
     $timezone = $_POST['timezone'];
 
-    $insert_call = "CALL report_accident(:id, :severity, :starttime, :endtime, :description, :streetnum, :streetname, 
+    $insert_call = "CALL report_accident(:id, :severity, :starttime, :endtime, :description, :streetnum, :streetname,
     :side, :city, :county, :state, :zipcode, :timezone)";
 
     try
@@ -37,7 +37,6 @@ if (isset($_POST['submit'])) {
       $prepared_stmt->bindValue(':state', $state, PDO::PARAM_STR);
       $prepared_stmt->bindValue(':zipcode', $zipcode, PDO::PARAM_INT);
       $prepared_stmt->bindValue(':timezone', $timezone, PDO::PARAM_STR);
-
       $isSuccess = $prepared_stmt->execute();
     }
     catch (PDOException $ex)
@@ -50,6 +49,7 @@ if (isset($_POST['submit'])) {
 
 <html>
   <head>
+    <title>Report an Accident</title>
     <link rel="stylesheet" type="text/css" href="project2.css" />
   </head>
 

@@ -6,6 +6,7 @@ require_once("state_options.php");
 
 <html>
   <head>
+    <title>View Accident Area By State</title>
     <link rel="stylesheet" type="text/css" href="project2.css" />
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   </head>
@@ -20,7 +21,7 @@ require_once("state_options.php");
         <a href="deleteAccident.php">Delete an Accident</a>
 		</div>
     <div class="main">
-      <h1>View Accident Area Info by State</h1>
+      <h1>View Accident Area by State</h1>
       <p>
         On this page, you can see the overall data for the elements of the accidents
         per state. Upon submitting the form, there will be a graph that shows the

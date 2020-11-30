@@ -190,7 +190,7 @@ CREATE VIEW accident_weather AS
             pressure,
             visibility,
             wind_direction,
-						wind_speed,
+			wind_speed,
             precipitation,
             weather_condition
     FROM accidents
@@ -239,7 +239,6 @@ CREATE VIEW states AS
 SELECT DISTINCT state
 FROM accidents;
 
-
 DROP PROCEDURE IF EXISTS report_accident;
 DELIMITER //
 CREATE PROCEDURE report_accident(IN id VARCHAR(10), IN severity TINYINT(3), IN start_time DATETIME,
@@ -264,7 +263,7 @@ BEGIN
 			street, side, city, county, state, zipcode, timezone);
 
 END //
-DELIMITER :
+DELIMITER ;
 
 
 DROP PROCEDURE IF EXISTS delete_accident;
@@ -273,7 +272,7 @@ CREATE PROCEDURE delete_accident(IN id_val VARCHAR(10))
 BEGIN
 	DECLARE mysrc VARCHAR(15);
     SET mysrc = (SELECT src FROM accidents WHERE id = id_val);
-    
+
     IF (NOT mysrc = "Report Form") THEN
 		SIGNAL SQLSTATE "22003"
         SET MESSAGE_TEXT = "Only can delete if accident was reported through the form",
@@ -281,8 +280,8 @@ BEGIN
 	END IF;
 
 
-	DELETE FROM accidents 
+	DELETE FROM accidents
     WHERE id = id_val AND src = "Report Form";
 
 END //
-DELIMITER :
+DELIMITER ;
