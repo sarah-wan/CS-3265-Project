@@ -13,19 +13,19 @@ $dbname = 'accidentdb';
 // $dbname = 'accidentdb';
 
 // Use with Homebrew terminal connection
-try {
-  $dbo = new PDO('mysql:host=' . $dbhost . ';port=3306;dbname=' . $dbname, $dbuname, $dbpass);
-} catch (PDOException $e) {
-    echo 'Connection failed: ' . $e->getMessage();
-    exit;
-}
+// try {
+//   $dbo = new PDO('mysql:host=' . $dbhost . ';port=3306;dbname=' . $dbname, $dbuname, $dbpass);
+// } catch (PDOException $e) {
+//     echo 'Connection failed: ' . $e->getMessage();
+//     exit;
+// }
 
 
 
 // Use with MAMP
-// $dbo = new PDO('mysql:host=' . $dbhost . ';port=8889;dbname=' . $dbname, $dbuname, $dbpass);
+ $dbo = new PDO('mysql:host=' . $dbhost . ';port=3306;dbname=' . $dbname, $dbuname, $dbpass);
 
-if ($dbo->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+// if ($dbo->connect_error) {
+//   die("Connection failed: " . $conn->connect_error);
+// }
 ?>
