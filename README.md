@@ -1,6 +1,6 @@
 # CS-3265-Project
 ## How to View Website
-The website consists of five pages that are a .php type. Therefore, you must have php capabilities running on your computer to view and interact with the website. 
+The website consists of five pages that are a .php type. Therefore, you must have php capabilities running on your computer to view and interact with the website.
 ### Set Up Database
 To start, please download the dataset from this website: https://www.kaggle.com/sobhanmoosavi/us-accidents to your computer. Upon downloading the zip, extract it and pull the CSV file. **If you have a specific directory that data needs to be put into to run `LOAD DATA LOCAL INFILE` statements correctly, please move the CSV file to that directory and copy the path for the file**.
 
@@ -9,9 +9,12 @@ From there, start your SQL server (whether that is MAMP or Homebrew services) an
 ### Set Up Website
 To run this website, you must set up the credentials in the conn.php file. If you are running your SQL Server using a MAMP/WAMP service, you should be able to find the information about the connection to the database from the website. If you are using another service to run your SQL Server, you should be able to retrieve that information from the connection tab in mySQL Workbench and add those credentials to the conn.php file.
 
-**Note:** Depending on if you have a Mac or Windows machine, there may be different services you need to use in order to get your machine to properly display PHP files on your web service. Here are some resources you can use to ensure that your PHP file runs correctly:
+**NOTE:** There are two sections in the conn.php file where the database is being loaded using port 3306 and port 8889. Please update and change as you see fit.
+
+**NOTE:** Depending on if you have a Mac or Windows machine, there may be different services you need to use in order to get your machine to properly display PHP files on your web service. Here are some resources you can use to ensure that your PHP file runs correctly:
 * For Mac Users: https://jasonmccreary.me/articles/install-apache-php-mysql-mac-os-x-catalina/
 * For Windows Users: https://www.sitepoint.com/how-to-install-php-on-windows/
+
 
 ### Interacting with the Website
 The website consists of six different pages. The homepage, `index.html`, shows a description of the dataset, database, and the DML Usage in the database. Each of the subsequent pages interacts with the database in a different way.
