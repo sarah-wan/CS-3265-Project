@@ -60,7 +60,7 @@ try
       <?php
         function weather_results($result) {
            foreach ($result as $row) {
-             $id = $$row['id'];
+             $id = $row['id'];
              $city = $row['city'];
              $state = $row['state'];
              // $timestamp = explode(" ", $row['weather_timestamp']);
@@ -69,7 +69,7 @@ try
              //   // code...
              // }
              $temperature = $row['temperature'];
-             $wind_chill = $row['$wind_chill'];
+             $wind_chill = $row['wind_chill'];
              $humidity = $row['humidity'];
              $pressure = $row['pressure'];
              $visibility = $row['visibility'];
